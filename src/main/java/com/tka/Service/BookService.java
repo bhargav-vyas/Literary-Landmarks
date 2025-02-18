@@ -32,16 +32,13 @@ public class BookService {
 		
 		}
 
-		public Book deletBookById(Long Id) {
-		
-			Book book =bookRepository.getById(Id);
+		public String deletBookById(Long Id) {
 					try {
-						book.getId();
+						Book book =bookRepository.getById(Id);
 						bookRepository.deleteById(Id);
-						return book;
-						
+						return "Book with Id"+Id+ "deleted duccessfully";	
 					} catch (EntityNotFoundException e) {
-						throw new  IllegalArgumentException("BookWithId"+ Id +"Not found");
+				return "BookWithId"+ Id +"Not found";
 						
 						
 					}

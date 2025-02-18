@@ -36,9 +36,9 @@ public class BookService {
 					try {
 						Book book =bookRepository.getById(Id);
 						bookRepository.deleteById(Id);
-						return "Book with Id"+Id+ "deleted duccessfully";	
+						return "Book with Id "+ Id + " deleted Successfully";	
 					} catch (EntityNotFoundException e) {
-				return "BookWithId"+ Id +"Not found";
+				return "Book With Id"+ Id +"Not found";
 						
 						
 					}

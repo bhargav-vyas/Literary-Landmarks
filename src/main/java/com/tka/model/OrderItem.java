@@ -1,4 +1,4 @@
-package com.tak.model;
+package com.tka.model;
 
 import java.math.BigDecimal;
 
@@ -12,15 +12,15 @@ import jakarta.persistence.ManyToOne;
 public class OrderItem {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
 	@ManyToOne
-	@JoinColumn(name ="order_id",referencedColumnName = "id",insertable = false, updatable = false)
-	private long orderId;
+	@JoinColumn(name ="order_Id",nullable = false)
+	private Order order;
 	
 	@ManyToOne
-	@JoinColumn(name = "bookId",referencedColumnName = "id",insertable = false,updatable = false)
-	private int bookId;
+	@JoinColumn(name = "book_Id",nullable = false)
+	private Book book;
 	
 	private int quantity;
 	
@@ -31,37 +31,37 @@ public class OrderItem {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OrderItem(int id, long orderId, int bookId, int quantity, BigDecimal price) {
+	public OrderItem(long id, Order order, Book book, int quantity, BigDecimal price) {
 		super();
 		this.id = id;
-		this.orderId = orderId;
-		this.bookId = bookId;
+		this.order = order;
+		this.book = book;
 		this.quantity = quantity;
 		this.price = price;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public long getOrderId() {
-		return orderId;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrderId(long orderId) {
-		this.orderId = orderId;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
-	public int getBookId() {
-		return bookId;
+	public Book getBook() {
+		return book;
 	}
 
-	public void setBookId(int bookId) {
-		this.bookId = bookId;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	public int getQuantity() {
@@ -82,10 +82,9 @@ public class OrderItem {
 
 	@Override
 	public String toString() {
-		return "OrderItem [id=" + id + ", orderId=" + orderId + ", bookId=" + bookId + ", quantity=" + quantity
-				+ ", price=" + price + "]";
+		return "OrderItem [id=" + id + ", order=" + order + ", book=" + book + ", quantity=" + quantity + ", price="
+				+ price + "]";
 	}
-	
-	
 
-}
+	
+	}

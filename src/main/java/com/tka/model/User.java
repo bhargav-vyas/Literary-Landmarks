@@ -1,5 +1,9 @@
-package com.tak.model;
+package com.tka.model;
 
+import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.BatchSize;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,22 +13,25 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id ;
+	private long id ;
 	
+//	@NotBlank(message="Username cannot be blank.")
+//	 @Size(min = 6, message = "Password must have at least 6 characters")
 	private String username;
-	
+//	@NotBlank(message="Username cannot be blank.")
+//	 @Size(min = 6, message = "Password must have at least 6 characters")
 	private String password;
-	
+//	  @Email(message = "Invalid email format")
+	@Column(unique = true)
 	private  String email;
 	
 	private String  role;
 
-	public User() {
-		super();
+	 public User() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int id, String username, String password, String email, String role) {
+	public User(long id, String username, String password, String email, String role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -33,11 +40,11 @@ public class User {
 		this.role = role;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -78,7 +85,4 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", role="
 				+ role + "]";
 	}
-	
-	
-
 }

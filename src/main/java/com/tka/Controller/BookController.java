@@ -1,10 +1,14 @@
 package com.tka.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,22 +23,23 @@ public class BookController {
 	private BookService bookService;
 
 	@PostMapping("/add")
-	public  Book createbook(@RequestBody  Book book ) {
+	public Book createbook(@RequestBody Book book) {
 		return bookService.addBook(book);
 	}
+
 	@GetMapping("/{Id}")
-	public Book  findById(@PathVariable Long Id) {
-		Book book = bookService.findById(Id);
-		if (book!=null) {
-			return book;
-			
-		} else {
-			throw new IllegalArgumentException("Book with id"+Id+ "not found");
-		}		
-		}
+	public ResponseEntity<?> findById(@PathVariable Long Id) {
+		return bookService.findById(Id);
+
+	}
+
 	@DeleteMapping("/{Id}")
 	public String deletBookById(@PathVariable Long Id) {
 		return bookService.deletBookById(Id);
-		
+
+	}
+	@PutMapping("/update/{Id}")
+	public String udateBook(@PathVariable Long Id ,@RequestBody Book bookDetails) {
+		return bookService.updateBookById(Id, bookDetails);
 	}
 }

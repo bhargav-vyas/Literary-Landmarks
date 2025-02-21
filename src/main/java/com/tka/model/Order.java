@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import io.micrometer.common.lang.Nullable;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,11 +21,11 @@ public class Order {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long  id;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST) 
 	@JoinColumn(name ="userid", nullable =false)
 	private User user;
 	private BigDecimal totalamount ;
-	@Column(nullable =true)
+	
 		private LocalDate orderdate;
 	private String status;
 	

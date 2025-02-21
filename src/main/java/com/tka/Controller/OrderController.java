@@ -25,11 +25,7 @@ public class OrderController {
 		System.out.println(1);
 		return orderService.addOrder(order);
 	 	}
-	@GetMapping("/add/{Id}")
-	public List<Order> getallorder(@PathVariable Long Id){
-		return orderService.getAllorder(Id);
-		
-	}
+	
 	
 
 }

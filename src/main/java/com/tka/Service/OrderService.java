@@ -27,13 +27,14 @@ public class OrderService {
 		try {
 			if (orderRepository.getById(id) != null) {
 				orderRepository.deleteById(id);		
-				return "order with Id "  + id +" has deleted sccesufly ";
+				return "order with Id "  + id +" has been  deleted successful"
+						+ " ";
 			}
 			else {
 				return"order with Id" + id +" not found ";
 			}
 		} catch (Exception e) {
-			return "eror deleting order"+e.getMessage();
+			return "error deleting order"+e.getMessage();
 		}
 			
 		}

@@ -23,4 +23,20 @@ public class OrderService {
 		return orderRepository.getById(id);
 	}
 
-}
+	public String deletById(Long id) {
+		try {
+			if (orderRepository.getById(id) != null) {
+				orderRepository.deleteById(id);		
+				return "order with Id "  + id +" has deleted sccesufly ";
+			}
+			else {
+				return"order with Id" + id +" not found ";
+			}
+		} catch (Exception e) {
+			return "eror deleting order"+e.getMessage();
+		}
+			
+		}
+	}
+		
+	

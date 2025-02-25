@@ -38,6 +38,10 @@ public class OrderService {
 		}
 			
 		}
+
+	public List<Order> getAllorder() {
+		return orderRepository.findAll();
+	}
 	}
 		
 	

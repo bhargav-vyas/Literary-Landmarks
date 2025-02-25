@@ -39,10 +39,8 @@ public class OrderController {
 	}
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Order>>getAllOrders(){
-		
 		List<Order> orders =orderService.getAllorder();
 		return new ResponseEntity<>(orders,HttpStatus.OK);
-		
 	}
 	
 	

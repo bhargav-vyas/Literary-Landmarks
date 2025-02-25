@@ -36,9 +36,9 @@ public class BookService {
 		try {
 			Book book = bookRepository.getById(Id);
 			bookRepository.deleteById(Id);
-			return "Book with Id " + Id + " deleted Successfully";
+			return " Book with Id " + Id + " deleted Successfully ";
 		} catch (EntityNotFoundException e) {
-			return "Book With Id" + Id + "Not found";
+			return " Book With Id" + Id + "Not found ";
 
 		}
 	}
@@ -53,9 +53,9 @@ public class BookService {
 				existingBook.setPrice(bookDetails.getPrice());
 				existingBook.setStock(bookDetails.getStock());	
 				bookRepository.save(existingBook);
-				return "Book with ID "+ id + " update Successfully!";
+				return " Book with ID "+ id + " update Successfully! ";
 			 } catch (Exception e) {
-				return"Book With ID "+ id +" not found";
+				return" Book With ID "+ id +" not found ";
 			 }
 				
 			}

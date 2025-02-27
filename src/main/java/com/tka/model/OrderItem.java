@@ -2,7 +2,9 @@ package com.tka.model;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,11 +16,11 @@ public class OrderItem {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name ="order_Id",nullable = false)
 	private Order order;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_Id",nullable = false)
 	private Book book;
 	

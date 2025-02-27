@@ -2,8 +2,9 @@ package com.tka.Controller;
 
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.If;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus;import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,11 +45,5 @@ public class OrderController {
 		return new ResponseEntity<>(orders,HttpStatus.OK);
 	}
 	
-	
-	@GetMapping("searchByProductName")
-	public ResponseEntity <List<Order>>  searchProductName(@RequestParam  String productName ){
-		return null;
-		
-	}
 
 }

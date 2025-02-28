@@ -5,10 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+
 @Entity
 public class Book {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
+
 	 private long  id;
 	 private  String title;
 	 private String  author; 
@@ -16,11 +21,18 @@ public class Book {
 	 private int  stock;
 	 private  String genre;
 	 
+	
+	 
+	 
+	 @ManyToOne
+	 @JoinColumn(name="order_id")
+	 private Order order;
+	 
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Book(long id, String title, String author, BigDecimal price, int stock, String genre) {
+	public Book(long id, String title, String author, BigDecimal price, int stock, String genre , Order order) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -28,7 +40,11 @@ public class Book {
 		this.price = price;
 		this.stock = stock;
 		this.genre = genre;
+		this.order =order;
 	}
+	
+	
+	
 	public long getId() {
 		return id;
 	}

@@ -27,6 +27,9 @@ public class OrderController {
 	
 	@PostMapping("/add")
 	public Order CreateOrder(@RequestBody Order order) {
+		
+		
+		System.out.println(order);
 		System.out.println(1);
 		return orderService.addOrder(order);
 	 	}
@@ -44,6 +47,8 @@ public class OrderController {
 		List<Order> orders =orderService.getAllorder();
 		return new ResponseEntity<>(orders,HttpStatus.OK);
 	}
+
+	
 	
 
 }

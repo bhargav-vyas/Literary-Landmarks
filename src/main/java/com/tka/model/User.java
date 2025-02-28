@@ -1,6 +1,6 @@
 package com.tka.model;
 
-import org.antlr.v4.runtime.misc.NotNull;
+
 import org.hibernate.annotations.BatchSize;
 
 import jakarta.persistence.Column;
@@ -8,6 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 @Entity
 public class User {
 	
@@ -15,13 +18,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id ;
 	
-//	@NotBlank(message="Username cannot be blank.")
-//	 @Size(min = 6, message = "Password must have at least 6 characters")
+	@NotBlank(message="Username cannot be blank.")
+	 @Size(min = 6, message = "Password must have at least 6 characters")
 	private String username;
-//	@NotBlank(message="Username cannot be blank.")
-//	 @Size(min = 6, message = "Password must have at least 6 characters")
+	@NotBlank(message="Username cannot be blank.")
+	 @Size(min = 6, message = "Password must have at least 6 characters")
 	private String password;
-//	  @Email(message = "Invalid email format")
+	@Email(message = "enter valide email you are providing the wrong email")
 	@Column(unique = true)
 	private  String email;
 	

@@ -27,11 +27,11 @@ public class BookController {
 		return bookService.addBook(book);
 	}
 
-	@GetMapping("/{Id}")
-	public ResponseEntity<?> findById(@PathVariable Long Id) {
-		return bookService.findById(Id);
-
-	}
+//	@GetMapping("/{Id}")
+//	public ResponseEntity<?> findById(@PathVariable Long Id) {
+//		return bookService.findById(Id);
+//
+//	}
 
 	@DeleteMapping("/{Id}")
 	public String deletBookById(@PathVariable Long Id) {

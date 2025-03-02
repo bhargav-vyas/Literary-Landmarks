@@ -38,8 +38,8 @@ public class BookController {
 		return bookService.deletBookById(Id);
 
 	}
-	@PutMapping("/update/{Id}")
-	public String udateBook(@PathVariable Long Id ,@RequestBody Book bookDetails) {
-		return bookService.updateBookById(Id, bookDetails);
-	}
+//	@PutMapping("/update/{Id}")
+//	public String udateBook(@PathVariable Long Id ,@RequestBody Book bookDetails) {
+//		return bookService.updateBookById(Id, bookDetails);
+//	}
 }

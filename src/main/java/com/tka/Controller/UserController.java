@@ -1,5 +1,7 @@
 package com.tka.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,11 @@ public class UserController {
 		return usertService.getUserById(id);
 	}
 
+	@GetMapping("/getall")
+	private List<User> getAllUser(@RequestBody User user){
+		return usertService.getAllUser(user);
+		
+	}
 	
 	@PostMapping("/add")
 	private User  CreateUser(@Valid  @RequestBody User user) {

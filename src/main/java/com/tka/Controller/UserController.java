@@ -42,9 +42,12 @@ public class UserController {
 	private User  CreateUser(@Valid  @RequestBody User user) {
 		return usertService.CreateUser(user) ;
 	}
+
+	
 	@PutMapping("/update/{id}")
 	private User updateUserById(@PathVariable Long id , @RequestBody User userDetials) {
 		return usertService.updateUserById(id,userDetials);	
 	}
+	
 	
 }

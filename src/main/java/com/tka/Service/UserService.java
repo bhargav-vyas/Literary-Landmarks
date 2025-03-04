@@ -47,7 +47,7 @@ private UserRepository userRepository;
 	public User deletUserById(Long id) {
 		Optional<User> user =userRepository.findById(id);
 		if (!user.isPresent()) {
-			  throw new RuntimeException(" " + id + " not found");
+			  throw new RuntimeException("User with ID " + id + " not found");
 		}
 		userRepository.deleteById(id);
 		return user.get();

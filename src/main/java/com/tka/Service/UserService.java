@@ -33,9 +33,15 @@ public class UserService {
 			User user =existUser.get();
 			user.setUsername(userDetials.getUsername());
 			user.setEmail(userDetials.getEmail());
+			user.setPassword(userDetials.getPassword());
+			user.setRole(userDetials.getRole());
+			user.setId(userDetials.getId());
+			return userRepository.save(user);
+		}else {
+			throw new RuntimeException("User with ID "+ id +"not foud");
 		}
 		
-		return ;
+		
 	}
 	
 

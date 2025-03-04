@@ -1,8 +1,6 @@
 package com.tka.Service;
 import java.util.List;
 import java.util.Optional;
-
-import org.hibernate.boot.jaxb.JaxbLogger_.logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -41,7 +39,6 @@ private UserRepository userRepository;
 		user.setEmail(userDetails.getEmail());
 		user.setPassword(userDetails.getPassword());
 		user.setRole(userDetails.getRole());
-	
 		return userRepository.save(user);
 
 		}

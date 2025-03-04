@@ -4,6 +4,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tka.dao.UserRepository;
@@ -42,5 +43,16 @@ private UserRepository userRepository;
 		return userRepository.save(user);
 
 		}
+
+	public User deletUserById(Long id) {
+		Optional<User> user =userRepository.findById(id);
+		if (!user.isPresent()) {
+			  throw new RuntimeException("User with ID " + id + " not found");
 			
+		}
+		userRepository.deleteById(id);
+		return user.get();
+	}
+			
+
 	}

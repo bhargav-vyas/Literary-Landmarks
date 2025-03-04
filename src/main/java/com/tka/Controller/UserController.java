@@ -3,6 +3,7 @@ package com.tka.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,11 @@ public class UserController {
 		return usertService.getAllUser(user);
 		
 	}
+	@DeleteMapping("/delet/{id}")
+	private User deletUserById(@PathVariable Long id) {
+		return usertService.deletUserById(id);
+	}
+	
 	
 	@PostMapping("/add")
 	private User  CreateUser(@Valid  @RequestBody User user) {
@@ -38,8 +44,7 @@ public class UserController {
 	}
 	@PutMapping("/update/{id}")
 	private User updateUserById(@PathVariable Long id , @RequestBody User userDetials) {
-		return usertService.updateUserById(id,userDetials);
-		
+		return usertService.updateUserById(id,userDetials);	
 	}
 	
 }

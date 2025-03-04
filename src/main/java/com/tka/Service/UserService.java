@@ -2,17 +2,21 @@ package com.tka.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.boot.jaxb.JaxbLogger_.logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tka.dao.UserRepository;
 import com.tka.model.User;
 
+import ch.qos.logback.classic.Logger;
+
 @Service
 public class UserService {
 @Autowired
- public UserRepository userRepository;
+private UserRepository userRepository;
 
 	public User CreateUser(User user) {
 		return userRepository.save(user);
@@ -26,23 +30,20 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
-	public User updateUserById(Long id, User userDetials) {
+	public User updateUserById(Long id, User userDetails) {
 		Optional<User> existUser = userRepository.findById(id);
 		
-		if (existUser.isPresent()) {
-			User user =existUser.get();
-			user.setUsername(userDetials.getUsername());
-			user.setEmail(userDetials.getEmail());
-			user.setPassword(userDetials.getPassword());
-			user.setRole(userDetials.getRole());
-			user.setId(userDetials.getId());
-			return userRepository.save(user);
-		}else {
-			throw new RuntimeException("User with ID "+ id +"not foud");
+		if (!existUser.isPresent()) {
+			throw new RuntimeException("User with ID " + id + " not found");	
 		}
-		
-		
-	}
+		User user =existUser.get();
+		user.setUsername(userDetails.getUsername());
+		user.setEmail(userDetails.getEmail());
+		user.setPassword(userDetails.getPassword());
+		user.setRole(userDetails.getRole());
 	
+		return userRepository.save(user);
 
-}
+		}
+			
+	}

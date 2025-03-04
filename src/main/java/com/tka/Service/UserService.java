@@ -38,7 +38,7 @@ public class UserService {
 			user.setId(userDetials.getId());
 			return userRepository.save(user);
 		}else {
-			throw new RuntimeException("User with ID "+ id +"not foud");
+			throw new RuntimeException(" "+ id +"not foud");
 		}
 		
 		
